@@ -1,0 +1,20 @@
+.container {
+  padding: 5% 10%;
+  font: Acumin Pro;
+}
+
+.logo-container {
+  background-position: center;
+  padding: 0px;
+  margin: 0px;
+  height: 100vh;
+  background-color: #5058f2;
+}
+.hide-buttom {
+  cursor: pointer;
+}
+
+.click-container {
+  cursor: pointer;
+  color:#1473E6
+}

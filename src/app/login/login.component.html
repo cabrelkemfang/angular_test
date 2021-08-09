@@ -1,0 +1,53 @@
+<div fxLayout="row" fxLayoutGap="2%">
+    <div fxFlex="40%" fxHide.lt-lg>
+        <div fxLayout="row" fxLayoutAlign="center center" class="logo-container">
+            <img src="./assets/images.jpeg" alt="logo">
+        </div>
+    </div>
+
+    <div fxFlex class="container">
+
+        <form fxLayout="column" [formGroup]="loginForm" (ngSubmit)="onLogin()" fxLayoutGap="5%">
+            <div fxFlexAlign="center">
+                <img src="./assets/logo.png" alt="ejara" class="img-container">
+            </div>
+
+            <mat-form-field id="username-container">
+                <mat-label>UserName</mat-label>
+                <input matInput type="text" formControlName="log" required>
+                <span matSuffix>
+                    <span class="material-icons">
+                        account_circle
+                    </span>&nbsp;</span>
+                <mat-error id="username-error-msg" *ngIf="loginForm.controls.log.hasError('required') ">
+                    UserName is <strong>required</strong>
+                </mat-error>
+
+            </mat-form-field>
+
+            <mat-form-field id="password-container">
+                <mat-label>Enter your password</mat-label>
+                <input matInput formControlName="password" [type]="hide ? 'password' : 'text'" required>
+                <mat-icon matSuffix (click)="hide = !hide" class="hide-buttom">{{hide ? 'visibility' :
+                    'visibility_off'}}
+                </mat-icon>
+                <mat-error id="password-error-msg" *ngIf="loginForm.controls.password.hasError('required')">
+                    Password is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <div *ngIf="!loginLoading" id="login-btn-container">
+                <button fxFlex mat-raised-button color="primary" type="submit">Login
+                </button>
+            </div>
+
+            <app-loading [loading]="loginLoading"></app-loading>
+        </form>
+        <div fxLayout="row" fxLayoutAlign="space-between none">
+            <p>Forget Password ?<span class="click-container"> Click Here </span> </p>
+            <p><span class="click-container"> Sign up</span> </p>
+        </div>
+
+    </div>
+
+</div>

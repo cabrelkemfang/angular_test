@@ -1,0 +1,77 @@
+<section fxLayout="row">
+
+    <aside fxFlex="20%" class="sidenav" fxHide.lt-md>
+        <div class="mat-elevation-z12 sidecontainer">
+            <div fxLayout="column" fxLayoutGap="15%">
+                <div fxFlexAlign="center">
+                    <img src="https://ejara-logo.s3.us-east-2.amazonaws.com/email-logo.png" alt="logo"
+                        class="img-container" [ngClass.sm]="{'img-sm-container':true, 'img-container':false}">
+                </div>
+                <div>
+                    <h3 [routerLink]="['/main/dashboard']" routerLinkActive="active">Dashboard</h3>
+                </div>
+                <div>
+                    <h3 [routerLink]="['/main/transaction']" routerLinkActive="active">Transaction</h3>
+                </div>
+                <div>
+                    <h3>Notification</h3>
+                </div>
+                <div>
+                    <h3>Currency</h3>
+                </div>
+            </div>
+        </div>
+    </aside>
+    <aside fxFlex>
+        <mat-toolbar color="primary" class="navbar">
+
+            <mat-toolbar-row fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="center center">
+                <div fxFlex fxHide.lt-lg fxShow.lt-md fxHide.gt-sm>
+                    <button mat-button [matMenuTriggerFor]="menu"><span class="material-icons blue-icon">
+                            reorder
+                        </span></button>
+                    <mat-menu #menu="matMenu">
+                        <button mat-menu-item>
+                            <h3 [routerLink]="['/main/dashboard']" routerLinkActive="active">Dashboard</h3>
+                        </button>
+                        <button mat-menu-item>
+                            <h3 [routerLink]="['/main/transaction']" routerLinkActive="active">Transaction</h3>
+                        </button>
+                        <button mat-menu-item>
+                            <h3>Notification</h3>
+                        </button>
+                        <button mat-menu-item>
+                            <h3>Currency</h3>
+                        </button>
+                    </mat-menu>
+                </div>
+                <div fxFlex="65%"></div>
+                <div fxFlex>
+                    <div fxLayout="row">
+                        <mat-icon class="example-icon" fxFlexAlign="center">account_circle
+                        </mat-icon>
+                        <span>User</span>
+                    </div>
+                </div>
+                <div fxFlex>
+                    <div fxLayout="row">
+                        <mat-icon class="example-icon" fxFlexAlign="center">help
+                        </mat-icon>
+                        <span>Help</span>
+                    </div>
+                </div>
+                <div fxFlex>
+                    <div fxLayout="row">
+                        <mat-icon class="example-icon" fxFlexAlign="center" (click)="logout()">input
+                        </mat-icon>
+                        <span>Logout</span>
+                    </div>
+                </div>
+            </mat-toolbar-row>
+        </mat-toolbar>
+
+        <div class="container">
+            <router-outlet></router-outlet>
+        </div>
+    </aside>
+</section>

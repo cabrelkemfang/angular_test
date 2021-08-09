@@ -1,0 +1,39 @@
+.sidecontainer {
+    height: 100vh;
+    /* background-color: #5058f2;    */
+    padding: 20px;
+}
+
+.img-container {
+    height: 200px;
+}
+
+.img-sm-container {
+    height: 100px;
+}
+
+div > h3:hover {
+    color: white;
+    background-color: #1473e6;
+    cursor: pointer;
+    padding: 5px 5px;
+}
+
+div > h3.active {
+    color: white;
+    background-color: #1473e6;
+    cursor: pointer;
+    padding: 5px 5px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.container {
+    padding: 50px;
+}
+
+.example-icon {
+    cursor: pointer;
+}

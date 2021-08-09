@@ -1,0 +1,101 @@
+<aside>
+  <h1>Transaction </h1>
+  <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="start center">
+    <mat-form-field appearance="standard" fxFlex="60%">
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)" #input>
+    </mat-form-field>
+
+    <mat-form-field fxFlex>
+      <mat-label>Transaction Status</mat-label>
+      <mat-select [(ngModel)]="status">
+        <mat-option *ngFor="let status of transaction_status" [value]="status">
+          {{status}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field fxFlex>
+      <mat-label>Transaction Type</mat-label>
+      <mat-select [(ngModel)]="type" >
+        <mat-option *ngFor="let type of transaction_type" [value]="type">
+          {{type}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" fxFlex (click)="seach()" >Apply</button>
+  </div>
+
+  <table mat-table [dataSource]="transactionDataSource" matSort>
+
+    <!-- receiver Column -->
+    <ng-container matColumnDef="receiver">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Receiver </th>
+      <td mat-cell *matCellDef="let element"> {{element.receiver}} </td>
+    </ng-container>
+
+    <!-- emitter Column -->
+    <ng-container matColumnDef="emitter">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Emitter </th>
+      <td mat-cell *matCellDef="let element"> {{element.emitter}} </td>
+    </ng-container>
+
+    <!-- transaction_status Column -->
+    <ng-container matColumnDef="transaction_status">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+      <td mat-cell *matCellDef="let element"> {{element.transaction_status}} </td>
+    </ng-container>
+
+    <!-- transaction_type Column -->
+    <ng-container matColumnDef="transaction_type">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Type </th>
+      <td mat-cell *matCellDef="let element"> {{element.transaction_type}} </td>
+    </ng-container>
+
+    <!-- amount_net Column -->
+    <ng-container matColumnDef="amount_net">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Amount Net </th>
+      <td mat-cell *matCellDef="let element"> {{element.amount_net}} </td>
+    </ng-container>
+
+    <!-- amount_raw Column -->
+    <ng-container matColumnDef="amount_raw">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Amount Raw </th>
+      <td mat-cell *matCellDef="let element"> {{element.amount_raw}} </td>
+    </ng-container>
+
+    <!-- fiat_currency Column -->
+    <ng-container matColumnDef="fiat_currency">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Fiat Currency </th>
+      <td mat-cell *matCellDef="let element"> {{element.fiat_currency}} </td>
+    </ng-container>
+
+    <!-- crypto_amount Column -->
+    <ng-container matColumnDef="crypto_amount">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Crypto Amount </th>
+      <td mat-cell *matCellDef="let element"> {{element.crypto_amount}} </td>
+    </ng-container>
+
+    <!-- crypto_currency Column -->
+    <ng-container matColumnDef="crypto_currency">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Crypto Currency </th>
+      <td mat-cell *matCellDef="let element"> {{element.crypto_currency}} </td>
+    </ng-container>
+
+    <!-- date_creation Column -->
+    <ng-container matColumnDef="date_creation">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Creation Date </th>
+      <td mat-cell *matCellDef="let element"> {{element.date_creation | date}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements">
+  </mat-paginator>
+  <app-loading [loading]="transactionLoading"></app-loading>
+
+</aside>

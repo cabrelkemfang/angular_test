@@ -1,0 +1,28 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  padding: 0px;
+  margin: 0px;
+  height: 98vh;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: aliceblue;
+}
+
+snack-bar-container.success {
+  background-color: #5cb85c;
+  color: #fff;
+}
+
+snack-bar-container.warn {
+  background-color: crimson;
+  color: #fff;
+}
+
+.mat-form-field {
+  color: black;
+}
